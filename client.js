@@ -27,11 +27,19 @@ function onReady() {
     
     //events
     //event handler
-    $('#clickableButton').on('click', function() {
-        console.log($('#nameInput').val());
-        $('#nameInput').val('');
+    $('#addPersonButton').on('click', function() {
+        let name = $('#nameInput').val();
+        $('#nameList').append(`<li>${name} 
+            <button class='deleteButton'>
+            Delete</button></li>`);
     });
-    
+
+    // $(this) refers to the element we just selected
+    $('#nameList').on('click', '.deleteButton', function() {
+        console.log('Delete Button was clicked.');
+        $(this).parent().remove();
+    });
+
     $('#clicked').on('click', function() {
         console.log('I was clicked');
     });
